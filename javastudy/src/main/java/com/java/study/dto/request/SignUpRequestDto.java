@@ -2,8 +2,10 @@ package com.java.study.dto.request;
 
 import com.java.study.model.User;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class SignUpRequestDto {
     private String userName;
     private String email;

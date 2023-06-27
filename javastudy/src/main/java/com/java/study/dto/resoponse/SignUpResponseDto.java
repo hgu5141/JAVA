@@ -1,7 +1,9 @@
 package com.java.study.dto.resoponse;
 
 import lombok.Builder;
+import lombok.Getter;
 
+@Getter
 public class SignUpResponseDto {
     private String message;
     private Long id;
