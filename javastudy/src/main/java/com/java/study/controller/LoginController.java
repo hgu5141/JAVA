@@ -1,5 +1,6 @@
 package com.java.study.controller;
 
+import com.java.study.dto.request.SignInRequestDto;
 import com.java.study.dto.request.SignUpRequestDto;
 import com.java.study.model.User;
 import com.java.study.service.UserService;
@@ -19,9 +20,12 @@ public class LoginController {
 
     @PostMapping("/sign/up")
     public ResponseEntity<?> uesrSignUp(@RequestBody SignUpRequestDto signupRequestDto) {
-        System.out.println("user = " + signupRequestDto);
         User user = userService.onCreateUser(signupRequestDto);
-        System.out.println("user = " + user);
         return new ResponseEntity<>(user.fromEntity("계정이 생성되었습니다."), HttpStatus.OK);
+    }
+
+    @PostMapping("/sign/up")
+    public ResponseEntity<?> userSignIn(@RequestBody SignInRequestDto signInRequestDto) {
+        return new ResponseEntity<>(userService.onSingIn(signInRequestDto), HttpStatus.OK);
     }
 }

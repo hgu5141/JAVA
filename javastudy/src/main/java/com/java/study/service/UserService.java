@@ -28,15 +28,13 @@ public class UserService {
         return userRepository.save(signUpRequestDto.toEntity());
     }
 
-    public User onSingIn(SignInRequestDto signInRequestDto) {
-        Optional<User> user = userRepository.findByEmail(signInRequestDto.getEmail());
-        if (user.isPresent()) {
-            throw  new IllegalArgumentException("존재하지 않는 계정입니다.");
+    public Boolean onSingIn(SignInRequestDto signInRequestDto) {
+        User user = userRepository.findByEmail(signInRequestDto.getEmail()).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 계정입니다."));
+        String password = user.getPassword();
+        Boolean checkPassword = passwordEncoder.matches(user.getPassword(), signInRequestDto.getPassword());
+        if (!checkPassword) {
+            throw  new IllegalArgumentException("비밀번호를 확인해주세요.");
         }
-//        Boolean checkPassword = passwordEncoder.matches(user.get().getPassword(), signInRequestDto.get);
-//        if (!checkPassword) {
-//            throw  new IllegalArgumentException("비밀번호를 확인해주세요.");
-//        }
-        return User;
+        return true;
     }
 }
