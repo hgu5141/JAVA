@@ -1,7 +1,6 @@
-package hello.core.oder;
+package hello.core.order;
 
 import hello.core.AppConfig;
-import hello.core.member.MemberServiceImpl;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
@@ -28,7 +27,7 @@ public class OrderServiceTest {
         Member member = new Member(memberId, "memberA", Grade.VIP);
         memberService.join(member);
 
-        Oder oder = orderService.createOder(memberId, "itemName", 10000);
-        Assertions.assertThat(oder.getDiscountPrice()).isEqualTo(1000);
+        Order order = orderService.createOder(memberId, "itemName", 10000);
+        Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
 }

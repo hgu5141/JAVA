@@ -1,14 +1,13 @@
 package hello.core;
 
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.MemberMemberRepository;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
-import hello.core.oder.OrderService;
-import hello.core.oder.OrderServiceImpl;
+import hello.core.order.OrderService;
+import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,16 +16,19 @@ public class AppConfig {
 
     @Bean
     public MemberService memberService() {
+        System.out.println("CALL AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public  MemberRepository memberRepository() {
+        System.out.println("CALL AppConfig.memberRepository");
         return new MemberMemberRepository();
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("CASLL AppConfig.orderService");
         return new OrderServiceImpl(
                 memberRepository(),
                 discountPolicy());

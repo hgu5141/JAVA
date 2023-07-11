@@ -1,13 +1,13 @@
-package hello.core.oder;
+package hello.core.order;
 
-public class Oder {
+public class Order {
 
     private Long memberId;
     private String itemName;
     private int itemPrice;
     private int discountPrice;
 
-    public Oder(Long memberId, String itemName, int itemPrice, int discountPrice) {
+    public Order(Long memberId, String itemName, int itemPrice, int discountPrice) {
         this.memberId = memberId;
         this.itemName = itemName;
         this.itemPrice = itemPrice;
